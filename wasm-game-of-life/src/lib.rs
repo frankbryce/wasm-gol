@@ -26,9 +26,21 @@ pub struct Universe {
 
 #[wasm_bindgen]
 impl Universe {
+    pub fn width(&self) -> u32 {
+        self.width
+    }
+
+    pub fn height(&self) -> u32 {
+        self.height
+    }
+
+    pub fn cells(&self) -> *const Cell {
+        self.cells.as_ptr()
+    }
+
     pub fn new() -> Universe {
-        let width = 64;
-        let height = 64;
+        let width = 142;
+        let height = 142;
 
         let cells = (0..width * height)
             .map(|i| {
