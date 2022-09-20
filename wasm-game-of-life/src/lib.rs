@@ -81,11 +81,9 @@ impl Universe {
         }
     }
 
-    pub fn render(&self) -> String {
-        self.to_string()
-    }
-
     pub fn tick(&mut self) {
+        // RAII will start/stop timer at initialize/destruct, respectively
+        let _timer = utils::Timer::new("Universe::tick");
         let mut next = self.cells.clone();
 
         for row in 0..self.height {
